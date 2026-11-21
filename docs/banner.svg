@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" role="img" aria-label="RAGForge banner">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b0f14"/>
+      <stop offset="100%" stop-color="#101a24"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6ee7b7"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#1b2733" stroke-width="1" opacity="0.55"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="320" fill="url(#bg)"/>
+  <rect width="1200" height="320" fill="url(#grid)"/>
+  <circle cx="1080" cy="40" r="180" fill="#38bdf8" opacity="0.06"/>
+  <circle cx="80" cy="300" r="160" fill="#6ee7b7" opacity="0.05"/>
+
+  <g font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">
+    <text x="64" y="104" fill="#e6edf3" font-size="58" font-weight="700" letter-spacing="-1.5">RAGForge</text>
+    <text x="66" y="140" fill="#8b98a5" font-size="20">Local RAG Studio · Ollama · Built from scratch</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14">
+    <g>
+      <rect x="64" y="190" width="176" height="56" rx="12" fill="#121821" stroke="#1f2a37"/>
+      <text x="84" y="215" fill="#6ee7b7" font-size="12">01 · INGEST</text>
+      <text x="84" y="234" fill="#e6edf3">Parse + chunk</text>
+    </g>
+    <path d="M248 218 L 282 218" stroke="#33414f" stroke-width="2" marker-end="url(#arrow)"/>
+    <g>
+      <rect x="290" y="190" width="176" height="56" rx="12" fill="#121821" stroke="#1f2a37"/>
+      <text x="310" y="215" fill="#6ee7b7" font-size="12">02 · EMBED</text>
+      <text x="310" y="234" fill="#e6edf3">Ollama vectors</text>
+    </g>
+    <path d="M474 218 L 508 218" stroke="#33414f" stroke-width="2"/>
+    <g>
+      <rect x="516" y="190" width="200" height="56" rx="12" fill="#121821" stroke="#1f2a37"/>
+      <text x="536" y="215" fill="#38bdf8" font-size="12">03 · RETRIEVE</text>
+      <text x="536" y="234" fill="#e6edf3">Dense + BM25 + RRF</text>
+    </g>
+    <path d="M724 218 L 758 218" stroke="#33414f" stroke-width="2"/>
+    <g>
+      <rect x="766" y="190" width="176" height="56" rx="12" fill="#121821" stroke="#1f2a37"/>
+      <text x="786" y="215" fill="#38bdf8" font-size="12">04 · MMR</text>
+      <text x="786" y="234" fill="#e6edf3">Diversify</text>
+    </g>
+    <path d="M950 218 L 984 218" stroke="#33414f" stroke-width="2"/>
+    <g>
+      <rect x="992" y="190" width="144" height="56" rx="12" fill="#121821" stroke="#1f2a37"/>
+      <text x="1012" y="215" fill="#6ee7b7" font-size="12">05 · ANSWER</text>
+      <text x="1012" y="234" fill="#e6edf3">Citations</text>
+    </g>
+  </g>
+
+  <rect x="64" y="272" width="360" height="4" rx="2" fill="url(#accent)" opacity="0.9"/>
+</svg>

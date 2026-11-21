@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-label="RAGForge interface preview">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#06090d"/>
+      <stop offset="100%" stop-color="#0a1119"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6ee7b7"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="userBubble" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#163244"/>
+      <stop offset="100%" stop-color="#152a2f"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="760" fill="url(#bg)"/>
+  <circle cx="1000" cy="70" r="260" fill="url(#glow)"/>
+
+  <!-- App window -->
+  <rect x="40" y="30" width="1120" height="700" rx="20" fill="#0b0f14" stroke="#1e2a38"/>
+  <rect x="40" y="30" width="290" height="700" rx="20" fill="#0d131b"/>
+  <rect x="310" y="30" width="20" height="700" fill="#0d131b"/>
+  <line x1="330" y1="30" x2="330" y2="730" stroke="#1e2a38"/>
+  <line x1="330" y1="100" x2="1160" y2="100" stroke="#1e2a38"/>
+
+  <g font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">
+    <!-- Brand -->
+    <g>
+      <rect x="64" y="58" width="42" height="42" rx="13" fill="#11231f" stroke="#1f4438"/>
+      <rect x="71" y="66" width="28" height="7" rx="3.5" fill="url(#accent)"/>
+      <rect x="74" y="76" width="22" height="6" rx="3" fill="url(#accent)" opacity="0.7"/>
+      <rect x="77" y="85" width="16" height="5" rx="2.5" fill="url(#accent)" opacity="0.45"/>
+    </g>
+    <text x="117" y="76" fill="#e8eef5" font-size="17" font-weight="700" letter-spacing="-0.3">RAGForge</text>
+    <text x="117" y="92" fill="#8b98a7" font-size="9.5" letter-spacing="1.4">LOCAL RAG STUDIO</text>
+
+    <!-- Connection -->
+    <rect x="62" y="120" width="246" height="46" rx="11" fill="#111923" stroke="#1e2a38"/>
+    <circle cx="79" cy="143" r="4.5" fill="#6ee7b7"/>
+    <text x="92" y="139" fill="#e8eef5" font-size="11.5" font-weight="600">Ollama connected</text>
+    <text x="92" y="153" fill="#8b98a7" font-size="9.5">v0.40.10 · 3 models</text>
+
+    <!-- Upload -->
+    <rect x="62" y="182" width="246" height="112" rx="14" fill="#0f1721" stroke="#2b3a4b" stroke-dasharray="5 4"/>
+    <circle cx="185" cy="214" r="17" fill="#11231f" stroke="#1f4438"/>
+    <path d="M185 222V206M178 212l7-7 7 7M177 224v4h16v-4" stroke="#6ee7b7" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="185" y="249" fill="#e8eef5" font-size="11.5" font-weight="600" text-anchor="middle">Drop documents here</text>
+    <text x="185" y="264" fill="#5f6c7b" font-size="9" text-anchor="middle">PDF, MD, TXT, DOCX, HTML · up to 50 MB</text>
+    <rect x="152" y="273" width="66" height="18" rx="6" fill="#16202c" stroke="#2b3a4b"/>
+    <text x="185" y="285" fill="#e8eef5" font-size="8.5" text-anchor="middle">Browse files</text>
+
+    <!-- Library -->
+    <text x="64" y="326" fill="#8b98a7" font-size="9" font-weight="700" letter-spacing="1.5">LIBRARY</text>
+    <rect x="128" y="317" width="40" height="13" rx="6.5" fill="#16202c" stroke="#1e2a38"/>
+    <text x="148" y="326" fill="#8b98a7" font-size="8" text-anchor="middle">2 docs</text>
+
+    <g>
+      <rect x="62" y="340" width="246" height="44" rx="9" fill="#111923" stroke="#1e2a38"/>
+      <rect x="71" y="349" width="26" height="26" rx="7" fill="#0d2231" stroke="#18384a"/>
+      <path d="M80 355h6l3 3v11h-9z" stroke="#38bdf8" stroke-width="1.2" fill="none" stroke-linejoin="round"/>
+      <text x="106" y="360" fill="#e8eef5" font-size="10.5" font-weight="600">rag-fundamentals.md</text>
+      <text x="106" y="373" fill="#5f6c7b" font-size="8.5">9 chunks · 7.2 KB</text>
+    </g>
+    <g>
+      <rect x="62" y="390" width="246" height="44" rx="9" fill="#111923" stroke="#1e2a38"/>
+      <rect x="71" y="399" width="26" height="26" rx="7" fill="#0d2231" stroke="#18384a"/>
+      <path d="M80 405h6l3 3v11h-9z" stroke="#38bdf8" stroke-width="1.2" fill="none" stroke-linejoin="round"/>
+      <text x="106" y="410" fill="#e8eef5" font-size="10.5" font-weight="600">local-models.md</text>
+      <text x="106" y="423" fill="#5f6c7b" font-size="8.5">7 chunks · 5.8 KB</text>
+    </g>
+
+    <!-- Sidebar footer -->
+    <line x1="62" y1="668" x2="308" y2="668" stroke="#1e2a38"/>
+    <text x="64" y="690" fill="#8b98a7" font-size="9">2 documents · 16 chunks</text>
+    <text x="64" y="706" fill="#5f6c7b" font-size="9">Embedder: nomic-embed-text · 768-d</text>
+
+    <!-- Topbar -->
+    <text x="362" y="58" fill="#e8eef5" font-size="14" font-weight="650">Ask your documents</text>
+    <text x="362" y="74" fill="#8b98a7" font-size="9.5">2 documents · 16 chunks · nomic-embed-text</text>
+
+    <rect x="720" y="47" width="190" height="30" rx="8" fill="#111923" stroke="#2b3a4b"/>
+    <text x="730" y="58" fill="#5f6c7b" font-size="7.5" letter-spacing="0.8">MODEL</text>
+    <text x="730" y="71" fill="#e8eef5" font-size="9.5">qwen2.5-coder:3b-instruct-q8_0</text>
+    <path d="M894 61l4 4 4-4" stroke="#8b98a7" stroke-width="1.2" fill="none"/>
+
+    <rect x="926" y="47" width="86" height="30" rx="8" fill="#111923" stroke="#2b3a4b"/>
+    <text x="936" y="58" fill="#5f6c7b" font-size="7.5" letter-spacing="0.8">TOP K</text>
+    <text x="936" y="71" fill="#6ee7b7" font-size="9.5" font-weight="700">6</text>
+    <rect x="954" y="65" width="48" height="3" rx="1.5" fill="#2b3a4b"/>
+    <rect x="954" y="65" width="30" height="3" rx="1.5" fill="url(#accent)"/>
+    <circle cx="984" cy="66.5" r="4" fill="#f2f8ff"/>
+
+    <rect x="1022" y="47" width="86" height="30" rx="8" fill="#111923" stroke="#2b3a4b"/>
+    <text x="1032" y="58" fill="#5f6c7b" font-size="7.5" letter-spacing="0.8">TEMP</text>
+    <text x="1032" y="71" fill="#6ee7b7" font-size="9.5" font-weight="700">0.2</text>
+    <rect x="1052" y="65" width="46" height="3" rx="1.5" fill="#2b3a4b"/>
+    <rect x="1052" y="65" width="9" height="3" rx="1.5" fill="url(#accent)"/>
+    <circle cx="1061" cy="66.5" r="4" fill="#f2f8ff"/>
+
+    <!-- User message -->
+    <rect x="790" y="124" width="320" height="44" rx="14" fill="url(#userBubble)" stroke="#245066"/>
+    <text x="806" y="143" fill="#e8eef5" font-size="10">How does reciprocal rank fusion work,</text>
+    <text x="806" y="157" fill="#e8eef5" font-size="10">and why combine it with BM25?</text>
+
+    <!-- Assistant message -->
+    <rect x="362" y="190" width="32" height="32" rx="10" fill="#13251f" stroke="#1f4438"/>
+    <rect x="370" y="197" width="16" height="5" rx="2.5" fill="#6ee7b7"/>
+    <rect x="372" y="205" width="12" height="4" rx="2" fill="#6ee7b7" opacity="0.7"/>
+    <rect x="374" y="212" width="8" height="3" rx="1.5" fill="#6ee7b7" opacity="0.45"/>
+
+    <rect x="406" y="190" width="704" height="166" rx="14" fill="#111923" stroke="#1e2a38"/>
+    <text x="424" y="214" fill="#e8eef5" font-size="10.5">Reciprocal Rank Fusion combines several ranked lists without needing their</text>
+    <text x="424" y="230" fill="#e8eef5" font-size="10.5">scores to share a scale. Each document receives a contribution from every</text>
+    <text x="424" y="246" fill="#e8eef5" font-size="10.5">list it appears in, using 1 / (k + rank). Dense retrieval is strong at</text>
+    <text x="424" y="262" fill="#e8eef5" font-size="10.5">paraphrases, while BM25 catches exact identifiers and rare keywords.</text>
+    <text x="424" y="282" fill="#e8eef5" font-size="10.5">A document ranked highly by both methods rises to the top.</text>
+    <rect x="746" y="271" width="18" height="15" rx="4" fill="#10303f" stroke="#2d6a86"/>
+    <text x="755" y="282" fill="#a8e4ff" font-size="8" font-weight="700" text-anchor="middle">1</text>
+    <rect x="768" y="271" width="18" height="15" rx="4" fill="#10303f" stroke="#2d6a86"/>
+    <text x="777" y="282" fill="#a8e4ff" font-size="8" font-weight="700" text-anchor="middle">2</text>
+
+    <!-- Sources -->
+    <text x="424" y="380" fill="#8b98a7" font-size="9.5" font-weight="600">Sources</text>
+    <rect x="474" y="371" width="18" height="12" rx="6" fill="#16202c" stroke="#1e2a38"/>
+    <text x="483" y="380" fill="#8b98a7" font-size="7.5" text-anchor="middle">3</text>
+
+    <rect x="424" y="390" width="686" height="54" rx="9" fill="#0b1118" stroke="#1e2a38"/>
+    <text x="438" y="406" fill="#6ee7b7" font-size="8.5" font-weight="700">[1]</text>
+    <text x="462" y="406" fill="#e8eef5" font-size="9" font-weight="600">rag-fundamentals.md</text>
+    <text x="576" y="406" fill="#5f6c7b" font-size="8">page 1</text>
+    <text x="1050" y="406" fill="#5f6c7b" font-size="7.5" text-anchor="end">dense 0.842 · bm25 4.12</text>
+    <text x="438" y="422" fill="#8b98a7" font-size="8.5">Reciprocal Rank Fusion combines several ranked lists without needing their scores...</text>
+    <text x="438" y="435" fill="#8b98a7" font-size="8.5">The constant k is usually 60. A document ranked highly by both methods rises...</text>
+
+    <rect x="424" y="452" width="686" height="54" rx="9" fill="#0b1118" stroke="#1e2a38"/>
+    <text x="438" y="468" fill="#6ee7b7" font-size="8.5" font-weight="700">[2]</text>
+    <text x="462" y="468" fill="#e8eef5" font-size="9" font-weight="600">rag-fundamentals.md</text>
+    <text x="576" y="468" fill="#5f6c7b" font-size="8">page 1</text>
+    <text x="1050" y="468" fill="#5f6c7b" font-size="7.5" text-anchor="end">dense 0.801 · bm25 3.57</text>
+    <text x="438" y="484" fill="#8b98a7" font-size="8.5">BM25 is a classic sparse ranking function that combines term frequency...</text>
+    <text x="438" y="497" fill="#8b98a7" font-size="8.5">BM25 excels at exact matches: names, error messages, API symbols...</text>
+
+    <rect x="424" y="514" width="686" height="54" rx="9" fill="#0b1118" stroke="#1e2a38"/>
+    <text x="438" y="530" fill="#6ee7b7" font-size="8.5" font-weight="700">[3]</text>
+    <text x="462" y="530" fill="#e8eef5" font-size="9" font-weight="600">rag-fundamentals.md</text>
+    <text x="576" y="530" fill="#5f6c7b" font-size="8">page 1</text>
+    <text x="1050" y="530" fill="#5f6c7b" font-size="7.5" text-anchor="end">dense 0.774 · bm25 2.91</text>
+    <text x="438" y="546" fill="#8b98a7" font-size="8.5">Maximal Marginal Relevance balances relevance and diversity when selecting...</text>
+    <text x="438" y="559" fill="#8b98a7" font-size="8.5">With lambda near 1 the selection is relevance-focused; near 0 it is diverse...</text>
+
+    <text x="424" y="592" fill="#5f6c7b" font-size="8">qwen2.5-coder:3b-instruct-q8_0 · 3 sources · 41.8 tok/s · 2.4s</text>
+
+    <!-- Composer -->
+    <rect x="390" y="640" width="720" height="50" rx="17" fill="#111923" stroke="#2b3a4b"/>
+    <text x="410" y="670" fill="#5f6c7b" font-size="10.5">Ask a question about your documents…</text>
+    <rect x="1052" y="648" width="38" height="34" rx="11" fill="url(#accent)"/>
+    <path d="M1071 673v-14M1065 665l6-6 6 6" stroke="#05141a" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="750" y="706" fill="#5f6c7b" font-size="8" text-anchor="middle">RAGForge answers only from your indexed documents.</text>
+  </g>
+</svg>
