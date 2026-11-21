@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RAGForge — Local RAG Studio</title>
+  <meta name="description" content="A fully local Retrieval-Augmented Generation studio powered by Ollama." />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <div class="sidebar-backdrop" id="sidebarBackdrop" hidden></div>
+
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="30" height="30">
+            <defs>
+              <linearGradient id="brandGradient" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#6ee7b7" />
+                <stop offset="100%" stop-color="#38bdf8" />
+              </linearGradient>
+            </defs>
+            <rect x="3" y="6" width="26" height="7" rx="3.5" fill="url(#brandGradient)" opacity="0.95" />
+            <rect x="6" y="15" width="20" height="6" rx="3" fill="url(#brandGradient)" opacity="0.7" />
+            <rect x="9" y="23" width="14" height="5" rx="2.5" fill="url(#brandGradient)" opacity="0.45" />
+          </svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">RAGForge</span>
+          <span class="brand-sub">Local RAG Studio</span>
+        </span>
+      </div>
+
+      <div class="connection" id="connection" title="Checking Ollama...">
+        <span class="status-dot" id="statusDot"></span>
+        <span class="connection-text">
+          <strong id="statusText">Connecting</strong>
+          <span id="statusDetail">Checking Ollama…</span>
+        </span>
+      </div>
+
+      <div class="upload-zone" id="dropzone" role="button" tabindex="0" aria-label="Upload documents">
+        <input type="file" id="fileInput" multiple hidden
+               accept=".pdf,.txt,.md,.markdown,.rst,.csv,.json,.log,.xml,.yaml,.yml,.toml,.ini,.cfg,.py,.js,.ts,.tsx,.jsx,.java,.go,.rs,.c,.cpp,.h,.sql,.sh,.ps1,.css,.docx,.html,.htm" />
+        <span class="upload-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 16V4" />
+            <path d="m7 9 5-5 5 5" />
+            <path d="M5 16v2a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2" />
+          </svg>
+        </span>
+        <span class="upload-title" id="uploadTitle">Drop documents here</span>
+        <span class="upload-hint">PDF, MD, TXT, DOCX, HTML · up to 50 MB</span>
+        <button class="btn btn-ghost" id="browseBtn" type="button">Browse files</button>
+      </div>
+
+      <div class="section-head">
+        <span class="section-title">Library</span>
+        <span class="pill" id="docCount">0 docs</span>
+        <button class="icon-btn" id="resetBtn" type="button" title="Reset index" aria-label="Reset index">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 6h18" />
+            <path d="M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2" />
+            <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="doc-list" id="docList">
+        <div class="doc-empty">No documents yet.<br />Upload a file to begin.</div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="footer-line" id="indexStats">No index</div>
+        <div class="footer-line muted" id="embedderStats">Embedder: —</div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="icon-btn mobile-only" id="menuBtn" type="button" aria-label="Open library">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+        <div class="topbar-title">
+          <h2>Ask your documents</h2>
+          <p id="indexSummary">No documents indexed yet</p>
+        </div>
+        <div class="controls">
+          <label class="control">
+            <span>Model</span>
+            <select id="modelSelect" aria-label="Chat model">
+              <option value="">Loading models…</option>
+            </select>
+          </label>
+          <label class="control range-control">
+            <span>Top K <b id="topKVal">6</b></span>
+            <input id="topK" type="range" min="1" max="12" step="1" value="6" />
+          </label>
+          <label class="control range-control">
+            <span>Temp <b id="tempVal">0.2</b></span>
+            <input id="temp" type="range" min="0" max="1" step="0.1" value="0.2" />
+          </label>
+        </div>
+      </header>
+
+      <div class="chat-scroll" id="chatScroll">
+        <div class="messages" id="messages">
+          <section class="welcome" id="welcome">
+            <div class="orb" aria-hidden="true"></div>
+            <span class="eyebrow">Local · Private · From scratch</span>
+            <h1>Answers grounded in <span class="gradient-text">your documents</span>.</h1>
+            <p class="welcome-copy">
+              Upload PDFs, notes, or code, then ask questions. RAGForge retrieves the
+              most relevant chunks with hybrid search and streams a cited answer from
+              your local Ollama models.
+            </p>
+            <div class="suggestions" id="suggestions">
+              <button class="suggestion" type="button" data-prompt="Summarize the key ideas in the indexed documents.">
+                <span class="suggestion-label">Summarize</span>
+                <span class="suggestion-text">Summarize the key ideas in the indexed documents.</span>
+              </button>
+              <button class="suggestion" type="button" data-prompt="What is reciprocal rank fusion and why is it useful?">
+                <span class="suggestion-label">Explain</span>
+                <span class="suggestion-text">What is reciprocal rank fusion and why is it useful?</span>
+              </button>
+              <button class="suggestion" type="button" data-prompt="How does chunking with overlap work?">
+                <span class="suggestion-label">Deep dive</span>
+                <span class="suggestion-text">How does chunking with overlap work?</span>
+              </button>
+              <button class="suggestion" type="button" data-prompt="Which models are recommended for a 6 GB GPU?">
+                <span class="suggestion-label">Hardware</span>
+                <span class="suggestion-text">Which models are recommended for a 6 GB GPU?</span>
+              </button>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <form class="composer" id="chatForm">
+        <div class="composer-inner">
+          <textarea id="query" rows="1" placeholder="Ask a question about your documents…"
+                    autocomplete="off" spellcheck="false"></textarea>
+          <button class="send-btn" id="sendBtn" type="submit" aria-label="Send message">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 19V5" />
+              <path d="m5 12 7-7 7 7" />
+            </svg>
+          </button>
+        </div>
+        <div class="composer-hint">
+          RAGForge answers only from your indexed documents. Enter to send, Shift+Enter for a new line.
+        </div>
+      </form>
+    </main>
+  </div>
+
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>
