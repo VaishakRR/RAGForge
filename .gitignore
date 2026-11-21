@@ -1,0 +1,27 @@
+# Environment
+.env
+.venv/
+venv/
+
+# Runtime data
+data/
+*.db
+*.db-wal
+*.db-shm
+uploads/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
